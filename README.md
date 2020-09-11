@@ -4,6 +4,12 @@ Using [preact](https://github.com/preactjs/preact)/[htm](https://github.com/deve
 
 Using `oceanwind` means the cost of building tailwind will be on runtime so be careful in production setup.
 
+# Let me see
+
+It's for fun so it's not really good looking lol but here it is.
+
+[demo](https://preact-htm-oceanwind-wobble.vercel.app/)
+
 # Launch
 
 No need to install or use yarn for dependencies since we are using es-modules (thank [unpkg](https://unpkg.com/)).
