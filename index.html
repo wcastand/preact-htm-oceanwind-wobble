@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Cancel action toast</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@1.7.5/dist/base.min.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import { render } from 'https://unpkg.com/preact@latest?module'
+
+      import ow from 'https://unpkg.com/oceanwind'
+      import htm from 'https://unpkg.com/htm?module'
+
+      import html from './utils.js'
+      import Test from './components/test.js'
+      import List from './components/list.js'
+
+      const data = [
+        { firstname: 'william', lastname: 'castandet' },
+        { firstname: 'stanislas', lastname: 'castandet' },
+        { firstname: 'sandrine', lastname: 'ferrier' },
+      ]
+      const head = [
+        { key: 'firstname', label: 'Prenom' },
+        { key: 'lastname', label: 'Nom' },
+        { key: 'operation', label: 'Action' },
+      ]
+      const addOp = (d) =>
+        d.map((d) => ({
+          ...d,
+          operation: ({ remove }) =>
+            html`<button className=${ow`bg-red-500 hover:bg-red-700 text-xs text-white py-1 px-2 rounded`} onClick=${() => remove()}>
+              delete
+            </button>`,
+        }))
+      render(
+        html`
+          <div className=${ow`h-full p-4`}>
+            <h1 className=${ow`font-mono text-xl font-bold text-gray-900`}>Preact - Htm - Oceanwind - useSpring with Wobble</h1>
+            <${Test} />
+            <${List} data=${addOp(data)} head=${head} />
+          </div>
+        `,
+        document.querySelector('#root')
+      )
+    </script>
+  </body>
+</html>
